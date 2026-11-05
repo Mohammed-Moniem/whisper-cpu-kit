@@ -9,3 +9,7 @@ recordings/
 transcripts/
 Release/
 .DS_Store
+
+# These verified runtime archives are intentionally stored in Git.
+!artifacts/whisper-bin-x64.zip
+!artifacts/runtime-NOTICES.zip

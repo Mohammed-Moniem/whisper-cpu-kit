@@ -56,9 +56,11 @@ Expected model SHA-256:
 `ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb`.
 On macOS, use `shasum -a 256 ggml-small-q5_1.bin`.
 
-The binary assets are attached to the release. A Git clone or GitHub source ZIP
-contains documentation, manifests and licenses; the 190 MB model exceeds GitHub's
-ordinary Git file limit.
+The Windows runtime and license ZIPs are also committed under [artifacts/](artifacts/),
+so a Git clone or GitHub source ZIP includes them. The 190 MB model is a Release
+asset because it exceeds GitHub's ordinary Git file limit. Download it into
+`artifacts/` and follow that folder's [instructions](artifacts/README.md), or use
+the standalone download instructions above.
 
 These exact artifacts previously passed local ClamAV checks and Windows/macOS
 English transcription smoke tests. See [recorded results and dates](docs/SCAN-RESULTS.md).
