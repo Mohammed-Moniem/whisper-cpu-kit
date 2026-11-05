@@ -1,0 +1,11 @@
+*.bin
+*.zip
+*.wav
+*.mp3
+*.m4a
+*.flac
+*.txt.tmp
+recordings/
+transcripts/
+Release/
+.DS_Store

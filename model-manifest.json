@@ -1,0 +1,45 @@
+{
+  "name": "Whisper Small multilingual Q5_1",
+  "file": "ggml-small-q5_1.bin",
+  "size_bytes": 190085487,
+  "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+  "license": "MIT",
+  "architecture": "whisper-small",
+  "parameters_approximate": 244000000,
+  "format": "legacy GGML",
+  "quantization": "Q5_1",
+  "multilingual": true,
+  "focus_languages": {
+    "ar": "Arabic",
+    "en": "English",
+    "hi": "Hindi"
+  },
+  "upstream": {
+    "model_author": "OpenAI",
+    "conversion_publisher": "ggerganov/whisper.cpp",
+    "repository": "https://huggingface.co/ggerganov/whisper.cpp",
+    "revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+    "download_url": "https://huggingface.co/ggerganov/whisper.cpp/resolve/5359861c739e955e79d9a303bcbc70fb988958b1/ggml-small-q5_1.bin",
+    "openai_license_revision": "86098128c0b4f24f0e2aa2994de830614b474227"
+  },
+  "downloaded_on": "2026-11-04",
+  "runtime": {
+    "name": "whisper.cpp",
+    "repository": "https://github.com/ggml-org/whisper.cpp",
+    "python_required": false,
+    "cpu_supported": true,
+    "platforms": [
+      "Windows x64",
+      "macOS Apple Silicon ARM64"
+    ],
+    "security_status": "See SECURITY.md. Runtime CVEs are separate from model artifact checks.",
+    "native_runtimes_are_separate_release_assets": true
+  },
+  "accuracy_status": "Smallest of Tiny/Base/Small in the earlier limited check to retain Arabic, English and Hindi scripts. Material errors remain; not production qualified. See docs/SCAN-RESULTS.md.",
+  "distribution": {
+    "type": "GitHub Release asset",
+    "tag": "v1.0.0",
+    "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/ggml-small-q5_1.bin",
+    "weights_in_git_tree": false
+  }
+}

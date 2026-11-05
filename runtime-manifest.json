@@ -1,0 +1,279 @@
+{
+  "schema_version": 1,
+  "release": "v1.0.0",
+  "checked_on": "2026-11-05",
+  "upstream_repository": "https://github.com/ggml-org/whisper.cpp",
+  "upstream_stable_version": "v1.9.5",
+  "upstream_binary_tag": "b5454",
+  "upstream_commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+  "model": {
+    "filename": "ggml-small-q5_1.bin",
+    "size_bytes": 190085487,
+    "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+    "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/ggml-small-q5_1.bin"
+  },
+  "windows": {
+    "filename": "whisper-bin-x64.zip",
+    "size_bytes": 8928640,
+    "sha256": "6ba69e3482d7826214f90a6a9c84ca07782aec1e1d0c6a7c30c994fd5d816ccb",
+    "source_url": "https://github.com/ggml-org/whisper.cpp/releases/download/b5454/whisper-bin-x64.zip",
+    "upstream_asset_id": 616096933,
+    "origin": "unchanged upstream Windows x64 CPU archive",
+    "executable": "Release/whisper-cli.exe",
+    "files": [
+      {
+        "path": "Release/bench.exe",
+        "size_bytes": 27648,
+        "sha256": "0998ddcc20eabdb410b7c736f71b5908e6a0619360075976d886e621f6112ee6"
+      },
+      {
+        "path": "Release/command.exe",
+        "size_bytes": 27648,
+        "sha256": "069cb77343a6056472a2f38cfe0530d534ee252310336062c630d6f150ec263a"
+      },
+      {
+        "path": "Release/ggml-base.dll",
+        "size_bytes": 693248,
+        "sha256": "bede0d6b2d387236ecd2b5dd676d51c8984b5b6e0ae461a12174e9c01345c5f0"
+      },
+      {
+        "path": "Release/ggml-cpu-alderlake.dll",
+        "size_bytes": 1009664,
+        "sha256": "d8f5c56ea490394eeae8b271650f2647aecd039a542d6df9e0140726e62a4603"
+      },
+      {
+        "path": "Release/ggml-cpu-cannonlake.dll",
+        "size_bytes": 1049600,
+        "sha256": "74127b40abd4f595d9db6af0fa313a02e18ff42fc228bfa05281e7c788dd4507"
+      },
+      {
+        "path": "Release/ggml-cpu-cascadelake.dll",
+        "size_bytes": 1061376,
+        "sha256": "4b11c427b844eeac87529af9a8d94b35aad2024666beb2a35e59fe3077e4b81e"
+      },
+      {
+        "path": "Release/ggml-cpu-haswell.dll",
+        "size_bytes": 1010688,
+        "sha256": "1306b1014c8118d27234d8ddc0e66ced1f8c8476bf85071595fd182ea9b7263b"
+      },
+      {
+        "path": "Release/ggml-cpu-icelake.dll",
+        "size_bytes": 1061376,
+        "sha256": "2b4dc4c66e7d8fe2807283816e9cf3b7f7d0556f59df34069871e37eab8aed40"
+      },
+      {
+        "path": "Release/ggml-cpu-sandybridge.dll",
+        "size_bytes": 1026560,
+        "sha256": "04edbdebc01a1d421062a960881a4f34d520d99693999518243f332406444c6e"
+      },
+      {
+        "path": "Release/ggml-cpu-skylakex.dll",
+        "size_bytes": 1049600,
+        "sha256": "1774714cf93621406ff35344b54715619a83242ae3e331e44d98a3b35ce801be"
+      },
+      {
+        "path": "Release/ggml-cpu-sse42.dll",
+        "size_bytes": 862720,
+        "sha256": "f060318772c4c2dbac312bbfff6ea700b85dbc502bb38585a7186d06d549301a"
+      },
+      {
+        "path": "Release/ggml-cpu-x64.dll",
+        "size_bytes": 866816,
+        "sha256": "4b4b05caba40d4309b5d710ef74c59ba190516b8489f27bdb1ba11ae33c6e9d3"
+      },
+      {
+        "path": "Release/ggml.dll",
+        "size_bytes": 62464,
+        "sha256": "31fe18616d872af9b6134b47a6dff8072ae4ecbe5df0273f4f8dc36766c9db8e"
+      },
+      {
+        "path": "Release/llama.dll",
+        "size_bytes": 2755072,
+        "sha256": "74b7857b05951c0dff4c7baf796205433c84ee40c9bbb0bda3f182d4425ce339"
+      },
+      {
+        "path": "Release/main.exe",
+        "size_bytes": 27648,
+        "sha256": "ebf6211d1dbcbcf71a1222bcf1846b638540a32630e1d691b4114a272ba4c5db"
+      },
+      {
+        "path": "Release/parakeet-cli.exe",
+        "size_bytes": 372224,
+        "sha256": "f7bdb50afd1c31a959eadf816a04878f8248c63973c027a64053346865091300"
+      },
+      {
+        "path": "Release/parakeet-quantize.exe",
+        "size_bytes": 102912,
+        "sha256": "b2296d8f44a7bffc1068c806d741aa3e59def2de1a86d3f8d7c2ce4fc8750377"
+      },
+      {
+        "path": "Release/parakeet.dll",
+        "size_bytes": 582144,
+        "sha256": "abe7399d64a67b1ebcb8d33becd07c67cbf186cb0d2bab34a4264feefdc337c4"
+      },
+      {
+        "path": "Release/SDL2.dll",
+        "size_bytes": 2500096,
+        "sha256": "de23db1694a3c7a4a735e7ecd3d214b2023cc2267922c6c35d30c7fc7370d677"
+      },
+      {
+        "path": "Release/stream.exe",
+        "size_bytes": 27648,
+        "sha256": "280f9f0f6015df40380fbde07f1b32614547a9122e61f7f49bb090ea72474f76"
+      },
+      {
+        "path": "Release/test-common-utf8.exe",
+        "size_bytes": 324608,
+        "sha256": "f9b60cfec215988fe2af8b2967610d08f828f086ecf73a2932140f7a4c4f18f5"
+      },
+      {
+        "path": "Release/test-parakeet-full-diffusion.exe",
+        "size_bytes": 369664,
+        "sha256": "8c4a36989dbf1a0313761aa13fa6a43ac1ce316425a18f9c4361c422891092c6"
+      },
+      {
+        "path": "Release/test-parakeet-full-gb1.exe",
+        "size_bytes": 366080,
+        "sha256": "0d96b6e2738e8437be2d209cf3b6b5fe9be9ddf1f70e627d587a0a54dcf97aa3"
+      },
+      {
+        "path": "Release/test-parakeet-full-jfk.exe",
+        "size_bytes": 366080,
+        "sha256": "bd5bad69933675a8e92a6f4a1ab9290ae25526ec9b6907a04ebb3f4801d963a8"
+      },
+      {
+        "path": "Release/test-parakeet.exe",
+        "size_bytes": 354816,
+        "sha256": "633c1d7cbdbd75a06ea80e25b84d4fbe9e648a9f2e1e91cab5c26d99ce1e9a42"
+      },
+      {
+        "path": "Release/test-vad-full.exe",
+        "size_bytes": 355840,
+        "sha256": "f617a0f8cefe100a5db66ef0a81c517b211d454a2780bedd7b6dbfbd1a15eaea"
+      },
+      {
+        "path": "Release/test-vad.exe",
+        "size_bytes": 354304,
+        "sha256": "1c8a5c758f21f5682d4fd1f67b1871ffbcc5b6adf784eb5507297073f40f3b7f"
+      },
+      {
+        "path": "Release/test-whisper-buffer-loader.exe",
+        "size_bytes": 11264,
+        "sha256": "53d2af0db387f7270fe4d969a41684313063ec91f422c4ff27963896cea9fdb5"
+      },
+      {
+        "path": "Release/test-whisper-lang-detect-abort.exe",
+        "size_bytes": 13312,
+        "sha256": "b306e8966a0783eb02a56f2a1cc6e602629930365a94b52e315ea379df744c8d"
+      },
+      {
+        "path": "Release/test-whisper-zero-samples.exe",
+        "size_bytes": 11776,
+        "sha256": "00a7b343074d6c45cf5b69e598b6a62a0d7c44e4b54968074086b0c8846f6cb4"
+      },
+      {
+        "path": "Release/wchess.exe",
+        "size_bytes": 178688,
+        "sha256": "01b112d6ac968fa13d3df6500bd24e771f1bee29df15989d6cb72efaf946f630"
+      },
+      {
+        "path": "Release/whisper-bench.exe",
+        "size_bytes": 20480,
+        "sha256": "d1425cdd3d130af16f6bb57e56dfb7ca42071d7e7bd9373ad2190ff7b0fcda92"
+      },
+      {
+        "path": "Release/whisper-cli.exe",
+        "size_bytes": 479744,
+        "sha256": "331dba46d6427105d2b802cdbc7eae916ea1c5abf9b0d3b5cfe460d8db8e4366"
+      },
+      {
+        "path": "Release/whisper-command.exe",
+        "size_bytes": 176640,
+        "sha256": "b8ac7c869ab036843054ec280cc3e78f37e6c35234ee6e6cc8b5e63af8498709"
+      },
+      {
+        "path": "Release/whisper-lsp.exe",
+        "size_bytes": 180736,
+        "sha256": "2b31873e8937ad0b9a3be5455bf7ca84cf515fae13edfa3614d8867f3c06dac2"
+      },
+      {
+        "path": "Release/whisper-quantize.exe",
+        "size_bytes": 111616,
+        "sha256": "04cacf442510a5c540946a8629306c52631d9b46b44c9c78f2a076e39cfff3fc"
+      },
+      {
+        "path": "Release/whisper-server.exe",
+        "size_bytes": 726016,
+        "sha256": "a97456e747f28e7bb09c1dac35f40d94404c5ecffa74aaaaa7a3753ea6543121"
+      },
+      {
+        "path": "Release/whisper-stream.exe",
+        "size_bytes": 378368,
+        "sha256": "f1099fca8a6762702467c4df52f999d8788922918515cef91e01284d444876c7"
+      },
+      {
+        "path": "Release/whisper-talk-llama.exe",
+        "size_bytes": 457728,
+        "sha256": "99fb5d291cfa385eea005fb4f313e5ee496f2c40d546079bac797e7523bc0117"
+      },
+      {
+        "path": "Release/whisper-vad-speech-segments.exe",
+        "size_bytes": 362496,
+        "sha256": "012d801ff1b69b1c8bbd55659561b0e43258bc8dffae19cb6f236e5ccc52d089"
+      },
+      {
+        "path": "Release/whisper.dll",
+        "size_bytes": 1370112,
+        "sha256": "034396d75bb5720c1851674ff64a96192b58f6927b68d334ebd254ce6cad9674"
+      }
+    ],
+    "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-bin-x64.zip"
+  },
+  "macos": {
+    "filename": "whisper-cpu-macos-arm64-b5454.zip",
+    "size_bytes": 1078824,
+    "sha256": "23b1953de71aaaeb5722538ac694115a44bb09a33ee3388fa43b7cf266c462d5",
+    "origin": "locally compiled CLI, not an official upstream binary",
+    "architecture": "arm64",
+    "minimum_deployment_target": "13.3",
+    "executable": "whisper-cli",
+    "executable_sha256": "7b6affd6998ab2ebc05fc8bfdf2fdd615aeba4111a67899caf08345af9cf9928",
+    "source_identity": "2039 tracked blobs matched pinned upstream Git tree",
+    "developer_id_signed": false,
+    "notarized": false,
+    "build": {
+      "CMAKE_BUILD_TYPE": "Release",
+      "CMAKE_OSX_DEPLOYMENT_TARGET": "13.3",
+      "CMAKE_OSX_ARCHITECTURES": "arm64",
+      "BUILD_SHARED_LIBS": "OFF",
+      "GGML_NATIVE": "OFF",
+      "GGML_CPU_ARM_ARCH": "armv8-a",
+      "GGML_METAL": "OFF",
+      "GGML_ACCELERATE": "ON",
+      "GGML_OPENMP": "OFF",
+      "WHISPER_BUILD_TESTS": "OFF",
+      "WHISPER_BUILD_SERVER": "OFF",
+      "WHISPER_BUILD_IS_DEV": "OFF",
+      "WHISPER_BUILD_COMMIT": "d1be6fde",
+      "WHISPER_BUILD_NUMBER": "5454"
+    },
+    "privacy": "Compiler file-prefix-map replaces the local source directory with whisper.cpp.",
+    "validation": "CPU smoke tests; see docs/SCAN-RESULTS.md",
+    "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-cpu-macos-arm64-b5454.zip"
+  },
+  "limitations": [
+    "Antivirus is not a complete security audit.",
+    "Known upstream CVEs remain documented in SECURITY.md.",
+    "No corporate approval is implied.",
+    "No Intel macOS binary is included."
+  ],
+  "distribution_repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+  "runtime_notices": {
+    "filename": "runtime-NOTICES.zip",
+    "size_bytes": 15219,
+    "sha256": "ab017fd1ce2dcbf40dcf86c43c1b000f2c373eebb4672494775f9ce25955ef2d",
+    "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/runtime-NOTICES.zip"
+  },
+  "existing_runtime_ci": "https://github.com/Mohammed-Moniem/offline-transcriber-cpu/actions/runs/41959675290",
+  "existing_runtime_ci_scope": "Unchanged runtime and model bytes passed English CPU smoke tests on Windows and macOS ARM64 before this repository was created."
+}

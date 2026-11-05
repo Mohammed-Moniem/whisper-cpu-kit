@@ -1,0 +1,49 @@
+
+-------------------------------------------------------------------------------
+
+
+----------- SCAN SUMMARY -----------
+Known viruses: 3628245
+Engine version: 1.5.4
+Scanned directories: 0
+Scanned files: 1
+Infected files: 0
+Data scanned: 386.12 MiB
+Data read: 181.28 MiB (ratio 2.13:1)
+Time: 8.575 sec (0 m 8 s)
+Start Date: 2026:11:04 23:11:47
+End Date:   2026:11:04 23:11:56
+
+Scan output: runtime-antivirus.log
+
+-------------------------------------------------------------------------------
+
+
+----------- SCAN SUMMARY -----------
+Known viruses: 3628245
+Engine version: 1.5.4
+Scanned directories: 2
+Scanned files: 43
+Infected files: 0
+Data scanned: 34.91 MiB
+Data read: 32.95 MiB (ratio 1.06:1)
+Time: 11.804 sec (0 m 11 s)
+Start Date: 2026:11:05 07:01:30
+End Date:   2026:11:05 07:01:42
+
+Scan output: final-archives-antivirus-normalized.log
+
+-------------------------------------------------------------------------------
+
+
+----------- SCAN SUMMARY -----------
+Known viruses: 3628245
+Engine version: 1.5.4
+Scanned directories: 0
+Scanned files: 2
+Infected files: 0
+Data scanned: 3.67 MiB
+Data read: 1.04 MiB (ratio 3.52:1)
+Time: 4.082 sec (0 m 4 s)
+Start Date: 2026:11:05 07:06:55
+End Date:   2026:11:05 07:06:59

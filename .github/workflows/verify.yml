@@ -1,0 +1,58 @@
+name: Verify released CPU runtimes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Verify downloaded runtime and model, then transcribe public fixture
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $manifest = Get-Content runtime-manifest.json -Raw | ConvertFrom-Json
+          Invoke-WebRequest -Uri 'https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-bin-x64.zip' -OutFile runtime.zip
+          if ((Get-FileHash runtime.zip -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manifest.windows.sha256) { throw 'Runtime hash mismatch' }
+          Expand-Archive runtime.zip -DestinationPath runtime
+          foreach ($item in $manifest.windows.files) {
+            $path = Join-Path runtime $item.path
+            if ((Get-Item $path).Length -ne $item.size_bytes) { throw "Size mismatch: $path" }
+            if ((Get-FileHash $path -Algorithm SHA256).Hash.ToLowerInvariant() -ne $item.sha256) { throw "Hash mismatch: $path" }
+          }
+          Invoke-WebRequest -Uri $manifest.model.url -OutFile ggml-small-q5_1.bin
+          if ((Get-FileHash ggml-small-q5_1.bin -Algorithm SHA256).Hash.ToLowerInvariant() -ne $manifest.model.sha256) { throw 'Model hash mismatch' }
+          Invoke-WebRequest -Uri 'https://raw.githubusercontent.com/ggml-org/whisper.cpp/d1be6fde11ac6e0407606b4e42fe72d34add8037/samples/jfk.wav' -OutFile fixture.wav
+          & ./runtime/Release/whisper-cli.exe -m ggml-small-q5_1.bin -f fixture.wav -l en -ng -t 4 -otxt -of smoke
+          if ($LASTEXITCODE -ne 0) { throw "Transcriber failed: $LASTEXITCODE" }
+          if ((Get-Content smoke.txt -Raw) -notmatch '(?i)country') { throw 'Expected transcription text missing' }
+          Write-Output 'PASS: published Windows x64 CPU runtime and model transcribed the public English fixture.'
+  macos:
+    runs-on: macos-15
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+      - name: Verify downloaded runtime and model, then transcribe public fixture
+        run: |
+          set -eu
+          test "$(uname -m)" = arm64
+          curl --fail --location --retry 3 --output whisper-cpu-macos-arm64-b5454.zip https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-cpu-macos-arm64-b5454.zip
+          expected=$(jq -r .macos.sha256 runtime-manifest.json)
+          printf '%s  %s\n' "$expected" whisper-cpu-macos-arm64-b5454.zip | shasum -a 256 -c -
+          unzip -q whisper-cpu-macos-arm64-b5454.zip -d runtime
+          curl --fail --location --retry 3 --output ggml-small-q5_1.bin https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/ggml-small-q5_1.bin
+          expected_model=$(jq -r .model.sha256 runtime-manifest.json)
+          printf '%s  %s\n' "$expected_model" ggml-small-q5_1.bin | shasum -a 256 -c -
+          curl --fail --location --retry 3 --output fixture.wav https://raw.githubusercontent.com/ggml-org/whisper.cpp/d1be6fde11ac6e0407606b4e42fe72d34add8037/samples/jfk.wav
+          ./runtime/whisper-cli -m ggml-small-q5_1.bin -f fixture.wav -l en -ng -t 4 -otxt -of smoke
+          grep -qi country smoke.txt
+          echo 'PASS: published macOS ARM64 CPU runtime and model transcribed the public English fixture.'
