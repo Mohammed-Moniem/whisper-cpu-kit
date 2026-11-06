@@ -12,6 +12,25 @@ $ErrorActionPreference = 'Stop'
 if (Test-Path Variable:PSNativeCommandUseErrorActionPreference) {
     $PSNativeCommandUseErrorActionPreference = $false
 }
+trap {
+    Write-Error "Windows packaging failure location: $($_.ScriptStackTrace)" -ErrorAction Continue
+    throw
+}
+
+function Resolve-BuildTool {
+    param([Parameter(Mandatory = $true)] [string] $Name)
+    # A tool can occur more than once on the VS/runner PATH. Resolve one
+    # ApplicationInfo explicitly rather than passing its .Source array.
+    $command = Get-Command -Name $Name -CommandType Application -All -ErrorAction Stop |
+        Select-Object -First 1
+    [string] $toolPath = $command.Path
+    if ([string]::IsNullOrWhiteSpace($toolPath) -or
+        -not (Test-Path -LiteralPath $toolPath -PathType Leaf)) {
+        throw "Cannot resolve a single executable file for $Name."
+    }
+    Write-Host "Resolved Windows build tool: $Name"
+    return $toolPath
+}
 
 function Invoke-CheckedNative {
     param(
@@ -19,6 +38,7 @@ function Invoke-CheckedNative {
         [string[]] $Arguments = @(),
         [switch] $Capture
     )
+    Write-Host "Running Windows build tool: $([IO.Path]::GetFileName($Executable))"
     $lines = @(& $Executable @Arguments 2>&1)
     $nativeExitCode = $LASTEXITCODE
     if (-not $Capture -or $nativeExitCode -ne 0) {
@@ -107,10 +127,10 @@ foreach ($line in $environmentLines) {
     }
 }
 $env:VSLANG = '1033'
-$cmake = (Get-Command 'cmake.exe' -CommandType Application -ErrorAction Stop).Source
-$compiler = (Get-Command 'cl.exe' -CommandType Application -ErrorAction Stop).Source
-$manifestTool = (Get-Command 'mt.exe' -CommandType Application -ErrorAction Stop).Source
-$dumpbin = (Get-Command 'dumpbin.exe' -CommandType Application -ErrorAction Stop).Source
+[string] $cmake = Resolve-BuildTool -Name 'cmake.exe'
+[string] $compiler = Resolve-BuildTool -Name 'cl.exe'
+[string] $manifestTool = Resolve-BuildTool -Name 'mt.exe'
+[string] $dumpbin = Resolve-BuildTool -Name 'dumpbin.exe'
 
 $nativeDirectory = Join-Path $outputRoot 'native\windows-x64'
 $workDirectory = Join-Path $outputRoot 'build'
