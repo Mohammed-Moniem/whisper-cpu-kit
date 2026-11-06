@@ -1,0 +1,9 @@
+{
+  "upstream_commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+  "version": "1.9.5",
+  "build_number": 5454,
+  "source_url": "https://codeload.github.com/ggml-org/whisper.cpp/zip/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+  "source_sha256": "6be93b881acb415c5a25d0ef85bb6a488099de0296e072e22a66d50f20ec40b9",
+  "model_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/ggml-small-q5_1.bin",
+  "model_sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb"
+}

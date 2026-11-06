@@ -1,0 +1,78 @@
+name: Build complete portable native runtimes
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Fetch pinned upstream and build static native engines
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $lock = Get-Content packaging/source-lock.json -Raw | ConvertFrom-Json
+          Invoke-WebRequest $lock.source_url -OutFile upstream.zip
+          if ((Get-FileHash upstream.zip -Algorithm SHA256).Hash.ToLowerInvariant() -ne $lock.source_sha256) { throw 'Upstream source archive mismatch' }
+          Expand-Archive upstream.zip -DestinationPath upstream
+          $source = (Get-ChildItem upstream -Directory | Select-Object -First 1).FullName
+          ./packaging/build-windows.ps1 -SourceDirectory $source -OutputDirectory build-out
+          $package = Join-Path $PWD 'portable test folder'
+          New-Item -ItemType Directory -Force -Path "$package/bin/windows-x64", "$package/models" | Out-Null
+          Copy-Item build-out/native/windows-x64/*.exe "$package/bin/windows-x64/"
+          Copy-Item packaging/transcribe.cmd "$package/transcribe.cmd"
+          Copy-Item "$source/samples/jfk.wav" "$package/sample.wav"
+          Invoke-WebRequest $lock.model_url -OutFile "$package/models/ggml-small-q5_1.bin"
+          ./packaging/test-windows.ps1 -PackageDirectory $package
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-windows-x64
+          path: build-out/native/windows-x64/
+          retention-days: 7
+  macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+            name: macos-arm64
+          - os: macos-15-intel
+            arch: x86_64
+            name: macos-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Build and exercise native offline launcher
+        env:
+          BUILD_ARCH: ${{ matrix.arch }}
+          NATIVE_NAME: ${{ matrix.name }}
+        run: |
+          set -eu
+          curl --fail --location --retry 3 --output upstream.zip "$(jq -r .source_url packaging/source-lock.json)"
+          printf '%s  upstream.zip\n' "$(jq -r .source_sha256 packaging/source-lock.json)" | shasum -a 256 -c -
+          unzip -q upstream.zip -d upstream
+          source_dir="$PWD/upstream/whisper.cpp-d1be6fde11ac6e0407606b4e42fe72d34add8037"
+          sh packaging/build-macos.sh "$source_dir" "$PWD/native/$NATIVE_NAME" "$BUILD_ARCH"
+          mkdir -p "portable test folder/bin/$NATIVE_NAME" 'portable test folder/models'
+          cp "native/$NATIVE_NAME/whisper-cli" "portable test folder/bin/$NATIVE_NAME/whisper-cli"
+          cp packaging/transcribe.sh 'portable test folder/transcribe.sh'
+          chmod +x 'portable test folder/transcribe.sh' "portable test folder/bin/$NATIVE_NAME/whisper-cli"
+          cp "$source_dir/samples/jfk.wav" 'portable test folder/sample.wav'
+          curl --fail --location --retry 3 --output 'portable test folder/models/ggml-small-q5_1.bin' "$(jq -r .model_url packaging/source-lock.json)"
+          sh packaging/test-macos.sh "$PWD/portable test folder"
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: native-${{ matrix.name }}
+          path: native/${{ matrix.name }}/
+          retention-days: 7
