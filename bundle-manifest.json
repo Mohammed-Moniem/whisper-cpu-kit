@@ -1,0 +1,249 @@
+{
+  "binaries": {
+    "bin/macos-arm64/whisper-cli": {
+      "sha256": "ac5b0af617c1806a48301f2afd8127f02133ec9d563e020d8fff0ed043cd1ddc",
+      "size_bytes": 2484304
+    },
+    "bin/macos-x64/whisper-cli": {
+      "sha256": "0492d5ede7f66aac1a056cb113f2c90896c83460125793fd7c9b51562214975e",
+      "size_bytes": 2783536
+    },
+    "bin/windows-x64/whisper-cli-avx2.exe": {
+      "sha256": "488be5ef473a32c6735ae54a46b7b94c8db5288a31ec7135f7ae1a0c0a7535c4",
+      "size_bytes": 2612224
+    },
+    "bin/windows-x64/whisper-cli-generic.exe": {
+      "sha256": "d9dd9d6e8f7a3e23511048e7e8d8cbb6d24a1d5f4547d4618e01287453764573",
+      "size_bytes": 2377728
+    },
+    "bin/windows-x64/whisper-cli.exe": {
+      "sha256": "3beb7eb28a7db21a1b50cf110ccd6f54d79ab7d5b2b43e68efdd435d883462e7",
+      "size_bytes": 147456
+    }
+  },
+  "files": {
+    "LICENSE": {
+      "sha256": "285eaa0cd78be0c57ec7ce3a470befea2b73a566b6cc4ca8e2c937ea96997fa4",
+      "size_bytes": 1149
+    },
+    "README.txt": {
+      "sha256": "5915c5128e26f0e5f87a38d70393ed3fa0dd919b1e0cd701af2b30e35e3dbe50",
+      "size_bytes": 2448
+    },
+    "SECURITY.md": {
+      "sha256": "353dbc45503327d30924924f3d4efc53aa8ded434c623836d2049d0a91b10a53",
+      "size_bytes": 3768
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "e71bc34e20e0a9eb005762209e685abc35189683e16dc0b99dfaa54a2a9c1eba",
+      "size_bytes": 2571
+    },
+    "bin/macos-arm64/whisper-cli": {
+      "sha256": "ac5b0af617c1806a48301f2afd8127f02133ec9d563e020d8fff0ed043cd1ddc",
+      "size_bytes": 2484304
+    },
+    "bin/macos-x64/whisper-cli": {
+      "sha256": "0492d5ede7f66aac1a056cb113f2c90896c83460125793fd7c9b51562214975e",
+      "size_bytes": 2783536
+    },
+    "bin/windows-x64/whisper-cli-avx2.exe": {
+      "sha256": "488be5ef473a32c6735ae54a46b7b94c8db5288a31ec7135f7ae1a0c0a7535c4",
+      "size_bytes": 2612224
+    },
+    "bin/windows-x64/whisper-cli-generic.exe": {
+      "sha256": "d9dd9d6e8f7a3e23511048e7e8d8cbb6d24a1d5f4547d4618e01287453764573",
+      "size_bytes": 2377728
+    },
+    "bin/windows-x64/whisper-cli.exe": {
+      "sha256": "3beb7eb28a7db21a1b50cf110ccd6f54d79ab7d5b2b43e68efdd435d883462e7",
+      "size_bytes": 147456
+    },
+    "licenses/Apache-2.0.txt": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size_bytes": 11358
+    },
+    "licenses/README.md": {
+      "sha256": "0d38390374332096504a4bdf10c5e3ad9cd890968f89b474f25cd05af9e7bf04",
+      "size_bytes": 2823
+    },
+    "licenses/SDL2-zlib.txt": {
+      "sha256": "1852c8549e3d154687197d46abababd3e8faae035f19991b2ca850fa3a43ad57",
+      "size_bytes": 878
+    },
+    "licenses/Unicode-3.0.txt": {
+      "sha256": "e7a93b009565cfce55919a381437ac4db883e9da2126fa28b91d12732bc53d96",
+      "size_bytes": 1995
+    },
+    "licenses/YaRN-MIT.txt": {
+      "sha256": "02b6dcf651f680d60ef6ba372d2a9bd085a854c129e71c54f9bd7cd264ca47ba",
+      "size_bytes": 1090
+    },
+    "licenses/cpp-httplib-MIT.txt": {
+      "sha256": "79afd72ece803412ce54c60d7a45dfb7b761505c34bcd8dcfdee926435fd6057",
+      "size_bytes": 1127
+    },
+    "licenses/llama.cpp-MIT.txt": {
+      "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+      "size_bytes": 1078
+    },
+    "licenses/llamafile-MIT.txt": {
+      "sha256": "c5843750168debd92766cf0cf2f5040ce8a6eefe2ef7ebc652997b6897e1ba3b",
+      "size_bytes": 1058
+    },
+    "licenses/miniaudio-license-options.txt": {
+      "sha256": "1d13e0cd56bb6bff8c66eb67084765fbefddcfd931922d2a75c072a9efb7cde9",
+      "size_bytes": 2598
+    },
+    "licenses/nlohmann-json-MIT.txt": {
+      "sha256": "62176251affdda17bece4ddd44271d68019e2448ca721d2c1af4c650f29c9898",
+      "size_bytes": 1075
+    },
+    "licenses/nlohmann-json-additional-MIT-notices.txt": {
+      "sha256": "d10e4de6ac6db3193eaf57310cf6d6de9b71f84259861b293541aad3409118c8",
+      "size_bytes": 1332
+    },
+    "licenses/stb_vorbis-license-options.txt": {
+      "sha256": "0459bce8ce9b9b045d20d9c48192226d302f0cce81b151ba71189b2a10c8a8fc",
+      "size_bytes": 2589
+    },
+    "licenses/whisper.cpp-ggml-MIT.txt": {
+      "sha256": "94f29bbed6a22c35b992c5c6ebf0e7c92f13b836b90f36f461c9cf2f0f1d010d",
+      "size_bytes": 1078
+    },
+    "models/ggml-small-q5_1.bin": {
+      "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+      "size_bytes": 190085487
+    },
+    "provenance/macos-arm64/build-config.txt": {
+      "sha256": "58d093ad370b7dfa25173acaa4ad3e1249bda40a86061149fe4936adac0b1c3e",
+      "size_bytes": 1104
+    },
+    "provenance/macos-arm64/dependencies.txt": {
+      "sha256": "7d46bc03513acbaca664f6a34f9698991c83a63940439dae25aa2fecd18b7154",
+      "size_bytes": 304
+    },
+    "provenance/macos-x64/build-config.txt": {
+      "sha256": "73a62ac680909d58f1833907307d0f45b2cb8411751a4f1f395f9b5b634e95d3",
+      "size_bytes": 1142
+    },
+    "provenance/macos-x64/dependencies.txt": {
+      "sha256": "7d46bc03513acbaca664f6a34f9698991c83a63940439dae25aa2fecd18b7154",
+      "size_bytes": 304
+    },
+    "provenance/windows-x64/build-config.txt": {
+      "sha256": "ea82211ba9795ca842d81200840fbd78dbf9d972ba51bb223f1535a9eec92b4c",
+      "size_bytes": 1223
+    },
+    "provenance/windows-x64/dependencies.txt": {
+      "sha256": "21debdd6319ee5caf17ee5b59247a6167a80db0dbf796f3db6c2037285752745",
+      "size_bytes": 374
+    },
+    "sample.wav": {
+      "sha256": "59dfb9a4acb36fe2a2affc14bacbee2920ff435cb13cc314a08c13f66ba7860e",
+      "size_bytes": 352078
+    },
+    "transcribe.cmd": {
+      "sha256": "52b16c1f7e0c11b95040418117b430ab5134d546095702e063e276e040417803",
+      "size_bytes": 1799
+    },
+    "transcribe.sh": {
+      "sha256": "0324eef082f8db6c33c4280981ad5359a7a52a59e4b942d8aa383fee2dbd3fee",
+      "size_bytes": 1751
+    }
+  },
+  "limits": [
+    "Hashes and antivirus checks do not certify security.",
+    "Mac binaries are ad hoc signed, not Developer ID signed or notarized.",
+    "Recognition can make substantial errors; review transcripts.",
+    "Corporate application controls may require employer approval."
+  ],
+  "model": {
+    "conversion_repository": "https://huggingface.co/ggerganov/whisper.cpp",
+    "conversion_revision": "5359861c739e955e79d9a303bcbc70fb988958b1",
+    "path": "models/ggml-small-q5_1.bin",
+    "sha256": "ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb",
+    "size_bytes": 190085487
+  },
+  "native_builds": {
+    "macos-arm64": {
+      "commit": "443a0b202bb2cfebfca4735aa38f86ddc82d765c",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177019183",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177019183"
+    },
+    "macos-x64": {
+      "commit": "443a0b202bb2cfebfca4735aa38f86ddc82d765c",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177019183",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177019183"
+    },
+    "windows-x64": {
+      "commit": "692e6d256538c9e1cdbbeef0a53ca10d44aa9cf0",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177998697",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177998697"
+    }
+  },
+  "package": {
+    "assembled_on": "2026-11-06",
+    "internet_required_to_run": false,
+    "name": "whisper-cpu-kit",
+    "python_required_to_run": false,
+    "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+    "version": "1.1.0",
+    "zip_filename": "whisper-cpu-kit-portable-v1.1.0.zip"
+  },
+  "packaging_sources": {
+    "packaging/PACKAGE-README.txt": {
+      "sha256": "5915c5128e26f0e5f87a38d70393ed3fa0dd919b1e0cd701af2b30e35e3dbe50",
+      "size_bytes": 2448
+    },
+    "packaging/assemble.py": {
+      "sha256": "d29b8146d1661e2ca1476d1a12c06a6eccf380ab8744308fa3b365bd164b33ae",
+      "size_bytes": 18951
+    },
+    "packaging/build-macos.sh": {
+      "sha256": "b351f42fd8d890281aabf8c9833f340f237e4c73ded0233145e86084823ad84c",
+      "size_bytes": 7608
+    },
+    "packaging/build-windows.ps1": {
+      "sha256": "66bd757e3d5388d429161f50d1884be3fb360676de1fdd7a6a404e5ae3aed76d",
+      "size_bytes": 12642
+    },
+    "packaging/source-lock.json": {
+      "sha256": "2bc8470a5f75931914b1cef8b17755055723f37ba9e887c26cc7ea86427f1737",
+      "size_bytes": 514
+    },
+    "packaging/transcribe.cmd": {
+      "sha256": "0b678431f90c1c7616f106aae4ae0dbf98fab036f36b5055b0f154387bfd556a",
+      "size_bytes": 1745
+    },
+    "packaging/transcribe.sh": {
+      "sha256": "0324eef082f8db6c33c4280981ad5359a7a52a59e4b942d8aa383fee2dbd3fee",
+      "size_bytes": 1751
+    },
+    "packaging/windows-dispatch.c": {
+      "sha256": "dff7c78b0043c1ac42a7c9a6210cdc0e94f14244f5ccf119e2ebd79b518a9dca",
+      "size_bytes": 5320
+    },
+    "packaging/windows-utf8.manifest": {
+      "sha256": "91ea8f3a7cd272622cb769fe7d3e47ba6dbd623eac45749902a75e810ca1b9b3",
+      "size_bytes": 718
+    }
+  },
+  "sample": {
+    "path": "sample.wav",
+    "sha256": "59dfb9a4acb36fe2a2affc14bacbee2920ff435cb13cc314a08c13f66ba7860e",
+    "size_bytes": 352078,
+    "source_url": "https://github.com/ggml-org/whisper.cpp/blob/d1be6fde11ac6e0407606b4e42fe72d34add8037/samples/jfk.wav"
+  },
+  "schema_version": 1,
+  "upstream_source": {
+    "archive_sha256": "6be93b881acb415c5a25d0ef85bb6a488099de0296e072e22a66d50f20ec40b9",
+    "archive_url": "https://codeload.github.com/ggml-org/whisper.cpp/zip/d1be6fde11ac6e0407606b4e42fe72d34add8037",
+    "build_number": 5454,
+    "commit": "d1be6fde11ac6e0407606b4e42fe72d34add8037",
+    "repository": "https://github.com/ggml-org/whisper.cpp",
+    "version": "1.9.5"
+  }
+}

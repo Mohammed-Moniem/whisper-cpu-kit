@@ -1,0 +1,2 @@
+446b218e58f55cf61c977250cde81d1ca8a883b7dbe24b72def75cad099f1cb7  whisper-cpu-kit-portable-v1.1.0.zip
+311394d4ae2487b3ff5c307c44c32e391a4392fbab7abfb7de9cace5fbbd7abf  bundle-manifest.json

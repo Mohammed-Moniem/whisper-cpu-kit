@@ -1,0 +1,37 @@
+{
+  "version": "1.1.0",
+  "filename": "whisper-cpu-kit-portable-v1.1.0.zip",
+  "url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.1.0/whisper-cpu-kit-portable-v1.1.0.zip",
+  "size_bytes": 188903554,
+  "sha256": "446b218e58f55cf61c977250cde81d1ca8a883b7dbe24b72def75cad099f1cb7",
+  "model_path_inside_zip": "whisper-cpu-kit/models/ggml-small-q5_1.bin",
+  "platforms": [
+    "Windows 10 version 1903 or later / Windows 11 x64",
+    "macOS 13.3 or later arm64",
+    "macOS 13.3 or later x86_64"
+  ],
+  "native_builds": {
+    "macos-arm64": {
+      "commit": "443a0b202bb2cfebfca4735aa38f86ddc82d765c",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177019183",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177019183"
+    },
+    "macos-x64": {
+      "commit": "443a0b202bb2cfebfca4735aa38f86ddc82d765c",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177019183",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177019183"
+    },
+    "windows-x64": {
+      "commit": "692e6d256538c9e1cdbbeef0a53ca10d44aa9cf0",
+      "repository": "https://github.com/Mohammed-Moniem/whisper-cpu-kit",
+      "run_id": "42177998697",
+      "run_url": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42177998697"
+    }
+  },
+  "python_required_to_run": false,
+  "additional_runtime_installation_required": false,
+  "supported_input": "16-bit PCM WAV",
+  "verification_document": "https://github.com/Mohammed-Moniem/whisper-cpu-kit/blob/main/docs/COMPLETE-PACKAGE.md"
+}

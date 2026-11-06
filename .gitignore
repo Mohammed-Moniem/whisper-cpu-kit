@@ -9,6 +9,15 @@ recordings/
 transcripts/
 Release/
 .DS_Store
+*.wav.txt
+__pycache__/
+*.py[cod]
+build-out/
+native/
+native-builds/
+upstream/
+complete-package/
+portable test folder/
 
 # These verified runtime archives are intentionally stored in Git.
 !artifacts/whisper-bin-x64.zip

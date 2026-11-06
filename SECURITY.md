@@ -7,8 +7,9 @@ scan date. Neither proves the absence of vulnerabilities.
 
 ## Upstream reports checked on 4 November 2026
 
-The Windows x64 **b5454** ZIP and locally built Mac ARM64 CLI use whisper.cpp
-commit `d1be6fde11ac6e0407606b4e42fe72d34add8037`, also tagged **v1.9.5**.
+The complete portable package and the older separate-runtime distribution use
+whisper.cpp commit `d1be6fde11ac6e0407606b4e42fe72d34add8037`, also tagged
+**v1.9.5 / b5454**.
 The following statuses are the recorded review on that date, not a claim that
 every upstream issue has been rechecked for this mirror:
 
@@ -26,12 +27,20 @@ These are existing upstream reports; this repository does not patch the runtime.
 
 ## Checks and limits
 
-[Scan results](docs/SCAN-RESULTS.md) record the model scan on 4 November 2026,
-runtime scans on 5 November 2026 and historical English CPU smoke tests.
-These do not establish exhaustive dependency CVE clearance, binary/source
-audit coverage, recording accuracy or employer approval. The Mac binary is not
-Developer ID signed or notarized. The extra tools in the Windows ZIP have not
-all been functionally tested.
+[Complete-package verification](https://github.com/Mohammed-Moniem/whisper-cpu-kit/blob/main/docs/COMPLETE-PACKAGE.md)
+records checks for the v1.1.0 ZIP. The included `bundle-manifest.json`,
+`SHA256SUMS` and `provenance/` directory identify its exact model, five native
+executables and build configurations. Historical scans for the older separate
+downloads remain in the repository's
+[scan results](https://github.com/Mohammed-Moniem/whisper-cpu-kit/blob/main/docs/SCAN-RESULTS.md).
+The complete package contains only the CLI engines and CPU selector; it does
+not include a server or the extra tools in the old official Windows archive.
+
+These checks do not establish exhaustive dependency CVE clearance,
+binary/source audit coverage, recording accuracy or employer approval. The
+Mac binaries are ad hoc signed, without Developer ID signing or notarization.
+The Windows executables are not Authenticode signed. Do not bypass operating
+system or corporate application controls to run them.
 
 A prior Codex Security source scan failed to start with "The selected scan target
 changed while the scan was starting. Try again." It produced no scan ID or

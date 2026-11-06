@@ -1,0 +1,45 @@
+name: Verify complete offline package
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Download only the complete ZIP, then test it offline
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $package = Get-Content complete-bundle.json -Raw | ConvertFrom-Json
+          Invoke-WebRequest $package.url -OutFile complete.zip
+          if ((Get-FileHash complete.zip -Algorithm SHA256).Hash.ToLowerInvariant() -ne $package.sha256) { throw 'Complete ZIP hash mismatch' }
+          $destination = Join-Path $env:RUNNER_TEMP 'complete package with spaces'
+          Expand-Archive complete.zip -DestinationPath $destination
+          ./packaging/test-windows.ps1 -PackageDirectory (Join-Path $destination 'whisper-cpu-kit')
+  macos:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-15, macos-15-intel]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09
+        with:
+          persist-credentials: false
+      - name: Download only the complete ZIP, then test it offline
+        run: |
+          set -eu
+          curl --fail --location --retry 3 --output complete.zip "$(jq -r .url complete-bundle.json)"
+          printf '%s  complete.zip\n' "$(jq -r .sha256 complete-bundle.json)" | shasum -a 256 -c -
+          mkdir extracted
+          unzip -q complete.zip -d extracted
+          sh packaging/test-macos.sh "$PWD/extracted/whisper-cpu-kit"

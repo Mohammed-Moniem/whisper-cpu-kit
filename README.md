@@ -1,82 +1,131 @@
 # Whisper CPU kit
 
-Downloadable CPU transcription for **Arabic, English and Hindi**, using native
-whisper.cpp and the multilingual Whisper Small Q5_1 model. No Python or GPU is
-required. The model is **190 MB**; this is the smallest of Tiny, Base and Small
-that retained the expected scripts in our limited comparison. Accuracy still
-needs proofreading, especially for Arabic and Hindi.
+Portable, offline transcription for **Arabic, English and Hindi** on Windows
+x64, Apple Silicon Macs and Intel Macs.
 
-## Windows x64
+## Download the complete package
 
-Download these three files into one folder:
+**[Download whisper-cpu-kit-portable-v1.1.0.zip](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.1.0/whisper-cpu-kit-portable-v1.1.0.zip)**
 
-- [whisper-bin-x64.zip](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-bin-x64.zip) — unchanged upstream **b5454** CPU runtime, 8.9 MB.
-- [ggml-small-q5_1.bin](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/ggml-small-q5_1.bin) — multilingual model, 190 MB.
-- [runtime-NOTICES.zip](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/runtime-NOTICES.zip) — companion runtime licenses; retain them with the runtime.
+Extract the entire ZIP. It contains the multilingual **Small Q5_1 model**,
+native executables for all three platforms, automatic launchers, a short test
+recording, checksums, provenance and licenses. No Python, compiler, package
+manager, account, internet connection or additional download is needed to
+transcribe a supported recording after extraction. Windows executables include
+the MSVC runtime statically; no separate Visual C++ installer is needed.
 
-Extract both ZIPs into that folder. Keep the model beside the ZIPs, with the
-runtime's `Release/` directory underneath. Open PowerShell in that folder and
-transcribe a local 16-bit PCM WAV recording:
+Supported systems:
 
-```powershell
-.\Release\whisper-cli.exe -m .\ggml-small-q5_1.bin -f .\recording.wav -l ar -ng -otxt
+| System | Included runtime |
+| --- | --- |
+| Windows 10 version 1903 or later / Windows 11, Intel or AMD x64 | Automatic AVX2 selection, plus a generic CPU fallback |
+| macOS 13.3 or later, Apple Silicon | Native ARM64 CPU executable |
+| macOS 13.3 or later, Intel Mac | Native x86_64 CPU executable |
+
+Windows ARM64 and older macOS versions are outside this package's supported
+platforms. On macOS the binaries have ad hoc signatures, without Developer ID
+signing or notarization. Corporate application controls may require IT approval.
+
+## Run it
+
+Use a **16-bit PCM WAV** recording. Open a terminal in the extracted
+`whisper-cpu-kit` folder:
+
+Windows Command Prompt:
+
+```bat
+transcribe.cmd "C:\Users\You\Documents\recording.wav" ar
 ```
 
-Use `-l en` for English or `-l hi` for Hindi. `-ng` selects CPU inference;
-`-otxt` writes a text transcript beside the recording. The Windows archive
-contains additional upstream tools; this command uses `whisper-cli.exe`.
-
-The runtime may need Microsoft's x64 Visual C++ Redistributable. See
-[Microsoft's official download instructions](https://learn.microsoft.com/en-us/cpp/windows/latest-supported-vc-redist).
-
-## Apple Silicon Mac
-
-Download [whisper-cpu-macos-arm64-b5454.zip](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/download/v1.0.0/whisper-cpu-macos-arm64-b5454.zip)
-and the same model above. Extract the ZIP, then place the model and recording
-beside `whisper-cli`:
+Mac Terminal:
 
 ```sh
-./whisper-cli -m ggml-small-q5_1.bin -f recording.wav -l ar -ng -otxt
+./transcribe.sh "/Users/you/Documents/recording.wav" ar
 ```
 
-This locally compiled runtime is **ARM64 only**, with a macOS **13.3** deployment
-target. It has no Developer ID signature or notarization. An Intel Mac binary
-is not included. The archive contains license notices.
+Use `ar` for Arabic, `en` for English or `hi` for Hindi. Arabic is the default.
+The launcher chooses the native executable, disables GPU execution and uses
+four CPU threads. The transcript is saved beside the recording as
+`recording.wav.txt`; that folder must be writable.
+
+Test with the included public English sample:
+
+```bat
+transcribe.cmd sample.wav en
+```
+
+```sh
+./transcribe.sh sample.wav en
+```
+
+Audio conversion software is not included. Convert recordings in another format
+to 16-bit PCM WAV using an approved tool before running the launcher.
 
 ## Integrity and verification
 
-All downloads are in the [v1.0.0 release](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/tag/v1.0.0).
-Compare their SHA-256 hashes with [SHA256SUMS](SHA256SUMS) before use. For the model:
+The [v1.1.0 release](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/tag/v1.1.0)
+includes the ZIP, [bundle-SHA256SUMS.txt](bundle-SHA256SUMS.txt) and
+[bundle-manifest.json](bundle-manifest.json). The extracted package also contains
+`SHA256SUMS` covering every payload file. Verify the ZIP before extraction:
 
 ```powershell
-Get-FileHash .\ggml-small-q5_1.bin -Algorithm SHA256
+Get-FileHash .\whisper-cpu-kit-portable-v1.1.0.zip -Algorithm SHA256
 ```
 
-Expected model SHA-256:
-`ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb`.
-On macOS, use `shasum -a 256 ggml-small-q5_1.bin`.
+```sh
+shasum -a 256 whisper-cpu-kit-portable-v1.1.0.zip
+```
 
-The Windows runtime and license ZIPs are also committed under [artifacts/](artifacts/),
-so a Git clone or GitHub source ZIP includes them. The 190 MB model is a Release
-asset because it exceeds GitHub's ordinary Git file limit. Download it into
-`artifacts/` and follow that folder's [instructions](artifacts/README.md), or use
-the standalone download instructions above.
+See [complete-package verification](docs/COMPLETE-PACKAGE.md) for build,
+dependency, offline execution and antivirus evidence. These checks do not
+certify security or establish employer approval. Known upstream reports and
+limitations are recorded in [SECURITY.md](SECURITY.md).
 
-These exact artifacts previously passed local ClamAV checks and Windows/macOS
-English transcription smoke tests. See [recorded results and dates](docs/SCAN-RESULTS.md).
-Those historical checks are limited evidence, not a security certification or
-corporate software approval. Known upstream issues remain in [SECURITY.md](SECURITY.md).
-Transcription runs locally after setup; keep private recordings and transcripts
+The 190 MB model is the smallest of Tiny, Base and Small that retained the
+expected scripts in our limited comparison. Recognition can still make
+substantial errors, especially for Arabic and Hindi. Proofread transcripts;
+meeting accuracy has not been qualified. Keep private recordings and transcripts
 out of this public repository.
 
-## Provenance and licenses
+## Contents and provenance
 
-Whisper model: OpenAI, MIT. Converted/quantized weights:
-[`ggerganov/whisper.cpp`](https://huggingface.co/ggerganov/whisper.cpp), revision
-`5359861c739e955e79d9a303bcbc70fb988958b1`.
+```text
+whisper-cpu-kit/
+  transcribe.cmd
+  transcribe.sh
+  bin/windows-x64/whisper-cli.exe
+  bin/windows-x64/whisper-cli-avx2.exe
+  bin/windows-x64/whisper-cli-generic.exe
+  bin/macos-arm64/whisper-cli
+  bin/macos-x64/whisper-cli
+  models/ggml-small-q5_1.bin
+  sample.wav
+  README.txt
+  SECURITY.md
+  THIRD_PARTY_NOTICES.md
+  LICENSE
+  licenses/
+  provenance/
+  bundle-manifest.json
+  SHA256SUMS
+```
+
 Runtime: [whisper.cpp](https://github.com/ggml-org/whisper.cpp), **v1.9.5 / b5454**,
-commit `d1be6fde11ac6e0407606b4e42fe72d34add8037`.
-This kit mirrors existing model and Windows binary bytes; the Mac CLI was built
-locally from that runtime commit. See [model-manifest.json](model-manifest.json),
-[runtime-manifest.json](runtime-manifest.json), [LICENSE](LICENSE) and
-[third-party notices](THIRD_PARTY_NOTICES.md). No upstream endorsement is claimed.
+commit `d1be6fde11ac6e0407606b4e42fe72d34add8037`. This package builds the
+unmodified upstream CLI and adds launchers and a Windows CPU selector. Build
+scripts, source hashes and dependency gates are in [packaging/](packaging/).
+Python is used by the maintainer's ZIP assembler; it is not needed on a target
+computer and is not included in the runtime ZIP.
+
+Model: OpenAI Whisper, MIT, converted/quantized by
+[`ggerganov/whisper.cpp`](https://huggingface.co/ggerganov/whisper.cpp), revision
+`5359861c739e955e79d9a303bcbc70fb988958b1`. Model bytes are unchanged, with SHA-256
+`ae85e4a935d7a567bd102fe55afc16bb595bdb618e11b2fc7591bc08120411bb`.
+Retain [LICENSE](LICENSE) and [third-party notices](THIRD_PARTY_NOTICES.md).
+No upstream endorsement is claimed.
+
+Download the release ZIP to obtain the complete runtime package. GitHub's
+automatically generated source ZIP and an ordinary clone contain the packaging
+sources and historical files; they do not contain the 190 MB model. The older
+[v1.0.0 release](https://github.com/Mohammed-Moniem/whisper-cpu-kit/releases/tag/v1.0.0)
+remains available as a historical distribution with separate downloads.
