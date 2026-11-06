@@ -1,9 +1,9 @@
 WHISPER CPU KIT - COMPLETE OFFLINE PACKAGE
 
 This ZIP contains native runtimes for:
-  Windows x64: Windows 10/11 on an Intel or AMD 64-bit processor.
-  Mac arm64: Apple Silicon (M-series).
-  Mac x64: Intel Mac.
+  Windows x64: Windows 10 version 1903 or later / Windows 11, Intel or AMD x64.
+  Mac arm64: macOS 13.3 or later on Apple Silicon (M-series).
+  Mac x64: macOS 13.3 or later on an Intel Mac.
 The launcher selects the runtime for your computer. On Windows, the bundled
 CPU selector automatically chooses the AVX2 or generic executable.
 

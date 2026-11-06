@@ -279,6 +279,10 @@ def assemble(arguments):
                     copy_file(entries[name], target, 0o755)
         copy_file(Path(arguments.model), stage / "models" / MODEL_NAME)
         copy_file(Path(arguments.sample), stage / "sample.wav")
+        # Confirm the copied payload too, rather than assuming source files
+        # stayed unchanged between their initial verification and copying.
+        verify_identity(stage / "models" / MODEL_NAME, MODEL_SIZE, MODEL_SHA256, "Staged model")
+        verify_identity(stage / "sample.wav", SAMPLE_SIZE, SAMPLE_SHA256, "Staged public JFK sample")
         copy_file(packaging_root / "PACKAGE-README.txt", stage / "README.txt")
         for name in ("LICENSE", "SECURITY.md", "THIRD_PARTY_NOTICES.md"):
             copy_file(repository_root / name, stage / name)

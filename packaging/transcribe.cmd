@@ -20,7 +20,9 @@ exit /b 2
 if not exist "%~dp0bin\windows-x64\whisper-cli.exe" goto missing_runtime
 if not exist "%~dp0models\ggml-small-q5_1.bin" goto missing_model
 if not exist "%RECORDING%" goto missing_recording
-if exist "%RECORDING%\." goto missing_recording
+rem A trailing \. can normalize back to the file itself. Inspect attributes.
+set "RECORDING_ATTRIBUTES=%~a1"
+if "%RECORDING_ATTRIBUTES:~0,1%"=="d" goto recording_is_directory
 
 "%~dp0bin\windows-x64\whisper-cli.exe" -m "%~dp0models\ggml-small-q5_1.bin" -f "%RECORDING%" -l "%LANGUAGE%" -ng -t 4 -otxt
 exit /b %ERRORLEVEL%
@@ -35,6 +37,10 @@ exit /b 1
 
 :missing_recording
 echo ERROR: The recording must be an existing WAV file. 1>&2
+exit /b 2
+
+:recording_is_directory
+echo ERROR: The recording path is a directory. Supply a WAV file. 1>&2
 exit /b 2
 
 :usage_error
