@@ -81,10 +81,23 @@ Zero detections means this engine and signature set found no matching malware
 signature. It does not establish absence of vulnerabilities, safe handling of
 malformed audio/models, exhaustive dependency CVE clearance or employer approval.
 
-The final public-download execution checks are pending in the
-`Verify complete offline package` workflow. That workflow downloads only the
-published ZIP, verifies its archive hash and all payload hashes, extracts it
-and repeats offline execution on Windows, Apple Silicon and Intel Mac runners.
+The final public-download execution checks **all passed** on 6 November 2026
+in [run 42178890561](https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42178890561),
+using packaging/metadata commit `bd04ad5099cab2d0cecc8f5ceb8985383894df94`:
+
+| Runner | Result |
+| --- | --- |
+| [Windows Server 2022 x64](https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42178890561/job/127763625530) | PASS: ZIP/payload hashes, automatic AVX2 selection, generic engine, Unicode/space paths, restricted PATH, outbound-denied CPU transcription and input errors |
+| [macOS 15 Apple Silicon](https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42178890561/job/127763625085) | PASS: ZIP/payload hashes, native architecture, system-only dependencies, Unicode/space paths, restricted PATH, network-denied CPU transcription and input errors |
+| [macOS 15 Intel](https://github.com/Mohammed-Moniem/whisper-cpu-kit/actions/runs/42178890561/job/127763625495) | PASS: same Mac checks using the native x86_64 runtime |
+
+Each job downloaded only the published ZIP, verified its archive hash and all
+payload hashes, extracted it and ran the bundled launcher. No target-side
+Python, compiler, package manager, model download or separate C/C++ runtime
+installation was used. GitHub's recorded release-asset digest also matches the
+scanned local ZIP SHA-256 above. An independent archive review verified all 34
+members, all checksums and executable modes, and found no private home paths,
+credential patterns, Python files or development artifacts in the payload.
 
 The exact new ARM64 CI binary also completed two existing public Google FLEURS
 Arabic fixtures and one existing synthetic Hindi fixture with the pinned model.
